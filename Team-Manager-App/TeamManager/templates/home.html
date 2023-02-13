@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Team Members</h1>
+<ul class="list-group">
+{% for team_member in object_list %}
+<li class="list-group-item" onclick="location.href = '{% url "update_member" team_member.pk %}'">
+        {% if team_member.role == "Admin" %}
+            {{team_member.first_name}} {{team_member.last_name}} (admin)
+
+        {% else %}
+            {{team_member.first_name}} {{team_member.last_name}}
+
+        {% endif %}
+        <br>
+        {{team_member.phone_number}}
+        <br>
+        {{team_member.email}}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

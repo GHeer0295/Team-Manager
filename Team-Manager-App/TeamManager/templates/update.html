@@ -1,0 +1,29 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+<h1>Edit Team Member</h1>
+
+<div class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+        Info
+        {% for field in form %}
+        <div>
+            {% if field.name != "role" %}
+                {{ field.errors }}
+                <br>
+                {{ field }}
+            
+            {% else %}
+                {{ field.errors }}
+                <br>
+                {{field.label_tag}} {{field}}
+                <br>
+            {% endif %}
+        </div>
+    {% endfor %}
+        <button class="btn btn-primary">Update</button>
+        <a class="btn btn-primary" href="{% url 'delete_member' teammember.pk%}"> Delete</a>
+    </form>
+</div>
+{% endblock %}
