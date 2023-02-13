@@ -2,6 +2,7 @@
 
 {% block content %}
 <h1>Team Members</h1>
+<h3>You have {{object_list.count}} Team Member(s)</h3>
 <ul class="list-group">
 {% for team_member in object_list %}
 <li class="list-group-item" onclick="location.href = '{% url "update_member" team_member.pk %}'">
